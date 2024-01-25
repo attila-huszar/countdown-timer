@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import style from './Timer.module.css'
+import logo from '../assets/logo.svg'
+import start from '../assets/start.svg'
+import pause from '../assets/pause.svg'
 
 export const Timer = () => {
   const [isActive, setIsActive] = useState(false)
@@ -73,10 +76,10 @@ export const Timer = () => {
 
   return (
     <div className={style.main}>
-      <img className={style.logo} src="src/assets/logo.svg" alt="logo"></img>
+      <img className={style.logo} src={logo} alt="logo"></img>
       <form>
         <div className={style.inputRow}>
-          <span>Set meditation for</span>
+          <span>Set timer for</span>
           <input
             className={style.inputTime}
             type="number"
@@ -96,10 +99,7 @@ export const Timer = () => {
       </div>
 
       <button className={style.button} type="button" onClick={handleSubmit}>
-        <img
-          src={isActive ? 'src/assets/pause.svg' : 'src/assets/start.svg'}
-          alt="play/pause"
-        />
+        <img src={isActive ? pause : start} alt="play/pause" />
         {isActive ? 'Pause' : 'Start'}
       </button>
 

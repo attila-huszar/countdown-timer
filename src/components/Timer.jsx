@@ -83,6 +83,8 @@ export const Timer = () => {
           <input
             className={style.inputTime}
             type="number"
+            pattern="[0-9]*"
+            inputMode="numeric"
             min="0"
             max="99"
             value={initialMins}

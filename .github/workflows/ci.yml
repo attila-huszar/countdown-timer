@@ -1,0 +1,25 @@
+name: CI
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [main]
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: latest
+          cache: npm
+      - name: Install dependencies
+        run: npm clean-install
+      - name: Lint
+        run: npm run lint
+      - name: Test
+        run: npm run test

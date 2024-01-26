@@ -7,3 +7,5 @@
 [![Build](https://github.com/attila-huszar/countdown-timer/actions/workflows/build.yml/badge.svg)](https://github.com/attila-huszar/countdown-timer/actions/workflows/build.yml)
 [![CodeQL](https://github.com/attila-huszar/countdown-timer/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/attila-huszar/countdown-timer/actions/workflows/github-code-scanning/codeql)
 [![GitHub last commit](https://img.shields.io/github/last-commit/attila-huszar/countdown-timer/main?logo=github)](https://github.com/attila-huszar/countdown-timer/commits/master)
+
+[<img src="https://s3.eu-central-1.amazonaws.com/attila.huszar/portfolio/simple-timer.webp" alt="simple timer" width="500">](https://simpletimer.pages.dev/)

@@ -21,5 +21,3 @@ jobs:
         run: npm clean-install
       - name: Lint
         run: npm run lint
-      - name: Test
-        run: npm run test

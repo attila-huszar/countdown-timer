@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
+import { Alarm } from './Alarm'
+import { alarms } from '../helper/alarmSounds'
 import style from './Timer.module.css'
-import logo from '../assets/logo.svg'
-import start from '../assets/start.svg'
-import pause from '../assets/pause.svg'
+import logo from '../assets/svg/logo.svg'
+import start from '../assets/svg/start.svg'
+import pause from '../assets/svg/pause.svg'
+import stop from '../assets/svg/stop.svg'
 
 export const Timer = () => {
   const [isActive, setIsActive] = useState(false)
@@ -10,14 +13,28 @@ export const Timer = () => {
   const [secs, setSecs] = useState(initialMins * 60)
   const [warnVis, setWarnVis] = useState(0)
   const interval = useRef(null)
+  const [alarmSound, setAlarmSound] = useState(alarms[0].sound)
+  const [isAlarmPlaying, setIsAlarmPlaying] = useState(false)
 
   useEffect(() => {
     if (secs === 0) {
+      if (isActive) {
+        alarmSound.loop = true
+        alarmSound.play()
+        setIsAlarmPlaying(true)
+      }
+
       setIsActive(false)
       clearInterval(interval.current)
       interval.current = null
     }
-  }, [secs])
+  }, [alarmSound, isActive, secs])
+
+  const handleAlarmEnd = () => {
+    alarmSound.pause()
+    alarmSound.currentTime = 0
+    setIsAlarmPlaying(false)
+  }
 
   const handleInputChange = (e) => {
     const minutes = Math.min(Number(e.target.value), 99)
@@ -77,6 +94,7 @@ export const Timer = () => {
   return (
     <div className={style.main}>
       <img className={style.logo} src={logo} alt="logo"></img>
+      <Alarm alarmSound={alarmSound} setAlarmSound={setAlarmSound} />
       <form>
         <div className={style.inputRow}>
           <span>Set timer for</span>
@@ -100,10 +118,17 @@ export const Timer = () => {
         {formatSecs(secs)}
       </div>
 
-      <button className={style.button} type="button" onClick={handleSubmit}>
-        <img src={isActive ? pause : start} alt="play/pause" />
-        {isActive ? 'Pause' : 'Start'}
-      </button>
+      {isAlarmPlaying ? (
+        <button className={style.button} type="button" onClick={handleAlarmEnd}>
+          <img src={stop} alt="stop" />
+          Stop
+        </button>
+      ) : (
+        <button className={style.button} type="button" onClick={handleSubmit}>
+          <img src={isActive ? pause : start} alt="play/pause" />
+          {isActive ? 'Pause' : 'Start'}
+        </button>
+      )}
 
       <div
         className={style.warn}
@@ -113,7 +138,7 @@ export const Timer = () => {
           transition: 'all 0.3s ease',
         }}>
         {initialMins
-          ? 'Please pause first to set new timer'
+          ? 'Please pause to set new timer'
           : 'Please set minutes to start'}
       </div>
     </div>

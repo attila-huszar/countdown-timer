@@ -1,0 +1,73 @@
+.alarm {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+
+@media only screen and (max-width: 600px) {
+  .alarm {
+    top: 20px;
+    right: 20px;
+  }
+}
+
+.alarmBtn {
+  width: 26px;
+  height: 26px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #6c38cc;
+  cursor: pointer;
+}
+
+.alarmBtn:hover {
+  background-color: #7848d0;
+}
+
+.alarmDropdown {
+  position: absolute;
+  width: max-content;
+  top: 50px;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  list-style: none;
+  color: #29292e;
+  background-color: #e1e1e6;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0;
+  clip: rect(auto, auto, 0, auto);
+  transition: all 0.3s ease;
+}
+
+.alarmDropdown.show {
+  opacity: 1;
+  clip: rect(auto, auto, 248px, auto);
+}
+
+.listItem {
+  padding: 10px;
+}
+
+.listItem:hover {
+  background-color: lightgray;
+}
+
+.listItem.active {
+  color: #fff;
+  background-color: #6c38cc;
+}
+
+.listItem.active:hover {
+  background-color: #7848d0;
+}
+
+.listItem:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.listItem:last-child {
+  border-radius: 0 0 8px 8px;
+}

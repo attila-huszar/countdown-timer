@@ -13,20 +13,22 @@ export const Alarm = ({ alarmSound, setAlarmSound }) => {
         onClick={() => setShowDropdown((prev) => !prev)}>
         <img src={alarm} alt="alarm select" />
       </div>
-      <ul
+      <div
         className={`${style.alarmDropdown} ${showDropdown ? style.show : ''}`}>
-        {alarms.map((alarm, i) => (
-          <li
-            key={i}
-            className={`${style.listItem} ${alarmSound === alarm.sound ? style.active : ''}`}
-            onClick={() => {
-              setAlarmSound(alarm.sound)
-              setShowDropdown(false)
-            }}>
-            {alarm.name}
-          </li>
-        ))}
-      </ul>
+        <ul className={style.alarmList}>
+          {alarms.map((alarm, i) => (
+            <li
+              key={i}
+              className={`${style.listItem} ${alarmSound === alarm.sound ? style.active : ''}`}
+              onClick={() => {
+                setAlarmSound(alarm.sound)
+                setShowDropdown(false)
+              }}>
+              {alarm.name}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }

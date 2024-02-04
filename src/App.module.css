@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  padding: 140px 40px 40px;
+  padding: 120px 40px 40px;
   gap: 40px;
   border-radius: 8px;
   background-color: #202024;
@@ -18,7 +18,7 @@
 
 @media only screen and (max-width: 600px) {
   .main {
-    padding: 120px 20px 20px;
+    padding: 100px 20px 20px;
   }
 
   .logo {
